@@ -1,25 +1,22 @@
 import { PrismaClient } from "@prisma/client";
+import CourseList from "@/ui/course/CourseList";
 
-export async function getData() {
-  const db = new PrismaClient();
-  const data = await db.course.findMany({});
-  const jsCourse = await db.course.findMany({
-    where: {
-      name: "Javascript",
-    },
-  });
+export async function getData(){
+  const prisma = new PrismaClient();
+  const data = await prisma.course.findMany({});
+
   return {
-    courseList: data,
-    selectedCourse: jsCourse,
-  };
+    courseContent : data
+  }
 }
 
-export default async function CourseList() {
-  const courseData = await getData();
+export default async function CourseView(){
+  const { courseContent } = await getData();
+  
   return (
     <div>
-      <h1>Welcome To Course List Page</h1>
-      <pre>{JSON.stringify(courseData, null, 2)}</pre>
+      <CourseList list={courseContent}/>
     </div>
   );
 }
+
