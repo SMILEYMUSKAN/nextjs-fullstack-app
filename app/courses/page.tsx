@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import CourseList from "@/ui/course/CourseList";
 
-export async function getData() {
+ async function getData() {
   const prisma = new PrismaClient();
   const data = await prisma.course.findMany({});
 

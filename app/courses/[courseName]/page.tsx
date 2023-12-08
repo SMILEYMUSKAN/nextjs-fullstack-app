@@ -6,20 +6,25 @@ interface CourseDetailsProps {
     courseName: string;
   };
 }
-
-export default async function CourseDetails(props: CourseDetailsProps) {
-  const {
-    params: { courseName },
-  } = props || {};
+const getCourseData = async (courseName : string) => {
   const prisma = new PrismaClient();
   const data = await prisma.course.findMany({
     where: {
       name: courseName,
     },
   });
+
+  return data;
+}
+export default async function CourseDetails(props: CourseDetailsProps) {
+  const {
+    params: { courseName },
+  } = props || {};
+  const courseInfo = await getCourseData(courseName);
+  console.log(courseInfo)
   return (
     <div>
-      <EachCourse list={data} />
+      <EachCourse list={courseInfo} />
     </div>
   );
 }
