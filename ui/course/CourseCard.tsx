@@ -7,19 +7,21 @@ import {
     Typography,
     Button,
   } from "@/ui/index";
+import Link from "next/link";
 
   interface CourseCardProp{
      course : Course
   }
    
   export function CourseCard({ course  }: CourseCardProp) {
-    const { name } = course;
+    const { name, coursePhotoUrl, id } = course;
     return (
       <Card className="mt-6 w-96">
-        <CardHeader color="blue-gray" className="relative h-56">
+        <CardHeader color="blue-gray" className="relative h-44">
           <img
-            src="https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80"
+            src={`${coursePhotoUrl}`}
             alt="card-image"
+            style={{backgroundRepeat:"no-repeat", backgroundSize:"cover"}}
           />
         </CardHeader>
         <CardBody>
@@ -28,7 +30,7 @@ import {
           </Typography>
         </CardBody>
         <CardFooter className="pt-0">
-          <Button>Read More</Button>
+          <Link href={`/courses/${name}`}><Button>About the course</Button></Link>
         </CardFooter>
       </Card>
     );

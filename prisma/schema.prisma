@@ -13,4 +13,12 @@ datasource db {
 model Course {
   id        Int     @id @default(autoincrement())
   name     String
+  coursePhotoUrl String @default("No Photo Url Provided")
+  instructor String @default("No Name")
+  description String @default("No Description") 
+  enrollmentStatus String @default("No enrollmentStatus") 
+  duration String @default("No duration") 
+  schedule String @default("No schedule") 
+  location String @default("Online")
 }
+

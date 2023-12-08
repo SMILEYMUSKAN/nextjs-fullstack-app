@@ -7,6 +7,7 @@ import {
     CardFooter,
     Typography,
     Button,
+    Input
   } from "@material-tailwind/react";
 
   export {
@@ -16,4 +17,5 @@ import {
     CardFooter,
     Typography,
     Button,
+    Input
   }
