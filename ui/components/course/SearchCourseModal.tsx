@@ -49,7 +49,7 @@ export function SearchCourseModal(props: any) {
                 <p className="text-center text-lg">Loading...</p>
               ) : (
                 <div>
-                  {courseData?.map((course, idx): any => (
+                  {courseData?.map((course : any, idx :any) => (
                     <div key={idx} className="border-b-2 mb-2 p-2">
                       <Link
                         href={`/courses/${course?.name}`}
