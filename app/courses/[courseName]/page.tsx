@@ -21,7 +21,7 @@ export default async function CourseDetails(props: CourseDetailsProps) {
     params: { courseName },
   } = props || {};
   const courseInfo = await getCourseData(courseName);
-  console.log(courseInfo)
+
   return (
     <div>
       <EachCourse list={courseInfo} />

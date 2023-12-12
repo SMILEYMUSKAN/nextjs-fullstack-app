@@ -1,4 +1,4 @@
-import { CourseListProps } from "@/ui/course/CourseList";
+import { CourseListProps } from "@/ui/components/course/CourseList";
 import { Course } from "@prisma/client";
 import { CourseDetailsCard } from "./CourseDetailsCard";
 

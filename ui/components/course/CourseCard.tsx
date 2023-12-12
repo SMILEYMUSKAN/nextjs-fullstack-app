@@ -14,7 +14,7 @@ import Link from "next/link";
   }
    
   export function CourseCard({ course  }: CourseCardProp) {
-    const { name, coursePhotoUrl, id } = course;
+    const { name, coursePhotoUrl } = course;
     return (
       <Card className="mt-6 w-96">
         <CardHeader color="blue-gray" className="relative h-44">
