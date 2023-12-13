@@ -48,3 +48,47 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Browse data 
   `npx prisma studio`
+
+## Seeding in prisma (insert data into db)
+`npx prisma db seed`
+
+## Reference Link (seeding prisma)
+https://www.prisma.io/docs/orm/prisma-migrate/workflows/seeding
+
+# Steps (To seeding)
+
+ 1. Include below code in **package.json** file.
+
+ ```json
+ "prisma": {
+  "seed": "ts-node prisma/seed.ts"
+},
+``````
+2. Create **seed.ts** file in **/prisma** folder to define our seeding data.
+
+3. Create some new courses in your **seed.ts** file: Ex:
+
+```ts
+const prisma  = require("@prisma/client");
+
+const { PrismaClient } = prisma || {};
+
+const prismaClientDb = new PrismaClient();
+
+(async () => {
+    const newCourse = await prismaClientDb.course.create({
+        data : {
+            name : "Python",
+            description : "Python",
+        }
+    })
+})()
+```
+
+4. Add **typescript, ts-node and @types/node** development dependencies:
+
+`npm install -D typescript ts-node @types/node`
+
+5. To seed the database, run the db seed CLI command:
+
+`npx prisma db seed`
