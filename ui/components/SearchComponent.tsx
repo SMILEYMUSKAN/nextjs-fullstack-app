@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from "react";
 import { SearchCourseModal } from "./SearchCourseModal";
 
@@ -11,7 +11,7 @@ function SearchComponent() {
   // There are three solutions to handle debounce functionality .
 
   // Solution-1
-/*
+  /*
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setDebouncedInputValue(searchText);
@@ -41,26 +41,25 @@ function SearchComponent() {
     setLoading(true);
     const clearTimeOutId = setTimeout(() => {
       getData();
-     }, 500)
-   
-   return () => clearInterval(clearTimeOutId)
-  }, [searchText])
+    }, 500);
+
+    return () => clearInterval(clearTimeOutId);
+  }, [searchText]);
 
   const getData = () => {
-    if(searchText){
+    if (searchText) {
       setLoading(true);
       fetch(`/api/courses?query=${searchText}`)
-    .then(res => res.json())
-    .then((courseInfo : any) => {
-      const { dbData } = courseInfo || {};
-      setCourseData(dbData);
-      setLoading(false);
-    })
-    .catch(console.log);
-
+        .then((res) => res.json())
+        .then((courseInfo: any) => {
+          const { dbData } = courseInfo || {};
+          setCourseData(dbData);
+          setLoading(false);
+        })
+        .catch(console.log);
     }
-  }
- // Solution-3 Example
+  };
+  // Solution-3 Example
   /*
    For this solution we will be using the debounce function from use-debounce,
    Firstly we will need to install lodash in our application by running the following command.
@@ -87,7 +86,7 @@ function SearchComponent() {
 };
   */
 
-   return (
+  return (
     <div className="flex gap-4 justify-center items-center mt-4">
       <SearchCourseModal
         setCourseData={setCourseData}

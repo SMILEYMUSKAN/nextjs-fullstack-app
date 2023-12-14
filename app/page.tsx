@@ -1,22 +1,24 @@
-import SearchBar from "@/ui/SearchBar";
+import SearchBar from "@/ui/components/SearchBar";
 import { PrismaClient } from "@prisma/client";
 
 export default function Home() {
-
-  const getCourseData = async () => {
-    
-  }
-
-  const getText = async (searchText : any) => {
-    'use server';
-    searchText ? searchText : ""
-    return searchText
-  }  
+  const getText = async (searchText: any) => {
+    "use server";
+    searchText ? searchText : "";
+    const prisma = new PrismaClient();
+    const coursesData = await prisma.course.findMany({
+      where: {
+        name: {
+          contains: searchText || "",
+        },
+      },
+    });
+    return coursesData;
+  };
 
   return (
     <main className="flex flex-col justify-center items-center gap-4">
-     <h1 className="mt-4">Welcome To Main Home Page</h1> 
-     <SearchBar getText={getText}/>
+      <SearchBar getText={getText} />
     </main>
-  )
+  );
 }
