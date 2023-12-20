@@ -1,7 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 
-
 export async function GET(request: NextRequest) {
   const prisma = new PrismaClient();
   const { searchParams } = new URL(request.url);
@@ -13,7 +12,7 @@ export async function GET(request: NextRequest) {
           name: {
             contains: searchText || "",
           },
-        }
+        },
       ],
     },
   });
@@ -21,4 +20,3 @@ export async function GET(request: NextRequest) {
     dbData: data,
   });
 }
-

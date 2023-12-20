@@ -1,21 +1,13 @@
 "use client";
 
 import {
-    Card,
-    CardHeader,
-    CardBody,
-    CardFooter,
-    Typography,
-    Button,
-    Input
-  } from "@material-tailwind/react";
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Typography,
+  Button,
+  Input,
+} from "@material-tailwind/react";
 
-  export {
-    Card,
-    CardHeader,
-    CardBody,
-    CardFooter,
-    Typography,
-    Button,
-    Input
-  }
+export { Card, CardHeader, CardBody, CardFooter, Typography, Button, Input };

@@ -33,12 +33,28 @@ function SearchBar({ getText }: any) {
       ) : (
         <>
           <div className="flex mt-6 flex-wrap justify-center items-center gap-4">
-            {courseData
-              ?.slice()
-              .sort((a: any, b: any) => (a?.name > b?.name ? 1 : -1))
-              .map((course: any) => (
-                <CourseCard key={course?.id} course={course} />
-              ))}
+            {courseData.length > 0 ? (
+              <>
+                {courseData
+                  ?.slice()
+                  .sort((a: any, b: any) => (a?.name > b?.name ? 1 : -1))
+                  .map((course: any) => (
+                    <CourseCard key={course?.id} course={course} />
+                  ))}
+              </>
+            ) : (
+              <div className="flex justify-center gap-2 items-center flex-col">
+                <section className="flex justify-center gap-2 items-center">
+                  <strong className="text-2xl">{searchText}</strong>
+                  <p className="text-2xl">Not Found, Search Again</p>
+                </section>
+                <img
+                  src="https://cdn.dribbble.com/users/2382015/screenshots/6065978/no_result.gif"
+                  alt="gif"
+                  className="w-full"
+                />
+              </div>
+            )}
           </div>
         </>
       )}

@@ -6,16 +6,16 @@ interface CourseDetailsProps {
     courseName: string;
   };
 }
-const getCourseData = async (courseName : string) => {
+const getCourseData = async (courseName: string) => {
   const prisma = new PrismaClient();
   const data = await prisma.course.findMany({
     where: {
-      name: courseName,
+      id: +courseName,
     },
   });
 
   return data;
-}
+};
 export default async function CourseDetails(props: CourseDetailsProps) {
   const {
     params: { courseName },

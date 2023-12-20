@@ -12,7 +12,7 @@ datasource db {
 
 model Course {
   id        Int     @id @default(autoincrement())
-  name     String
+  name     String  
   coursePhotoUrl String @default("No Photo Url Provided")
   instructor String @default("No Name")
   description String @default("No Description") 
@@ -20,5 +20,12 @@ model Course {
   duration String @default("No duration") 
   schedule String @default("No schedule") 
   location String @default("Online")
+  lessons Lessons[]
 }
 
+model Lessons {
+  id        Int     @id @default(autoincrement())
+  name      String 
+  courseId  Int 
+  course   Course @relation(fields: [courseId], references: [id])
+}

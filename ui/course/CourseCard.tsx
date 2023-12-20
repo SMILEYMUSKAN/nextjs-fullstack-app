@@ -14,7 +14,7 @@ interface CourseCardProp {
 }
 
 export function CourseCard({ course }: CourseCardProp) {
-  const { name, coursePhotoUrl } = course;
+  const { name, coursePhotoUrl, id } = course;
   return (
     <Card className="mt-6 w-96">
       <CardHeader color="blue-gray" className="relative h-44">
@@ -30,7 +30,7 @@ export function CourseCard({ course }: CourseCardProp) {
         </Typography>
       </CardBody>
       <CardFooter className="pt-0">
-        <Link href={`/courses/${name}`}>
+        <Link href={`/courses/${id}`}>
           <Button>About the course</Button>
         </Link>
       </CardFooter>

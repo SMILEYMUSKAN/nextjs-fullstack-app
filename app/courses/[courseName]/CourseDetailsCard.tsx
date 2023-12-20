@@ -7,6 +7,7 @@ import {
   Typography,
   Button,
 } from "@/ui/index";
+import Link from "next/link";
 
 interface CourseCardProp {
   course: Course;
@@ -21,6 +22,7 @@ export function CourseDetailsCard({ course }: CourseCardProp) {
     duration,
     location,
     enrollmentStatus,
+    id,
   } = course;
   return (
     <Card className="mt-6 w-96">
@@ -52,8 +54,13 @@ export function CourseDetailsCard({ course }: CourseCardProp) {
           Enrollment Status: {enrollmentStatus}
         </Typography>
       </CardBody>
-      <CardFooter className="pt-0 flex justify-center items-center">
-        <Button>Start Learning</Button>
+      <CardFooter className="pt-0 flex justify-center gap-4 items-center">
+        <Link href={`${id}/lessons`}>
+          <Button>Start Learning</Button>
+        </Link>
+        <Link href={"/"}>
+          <Button>Back To Courses</Button>
+        </Link>
       </CardFooter>
     </Card>
   );
